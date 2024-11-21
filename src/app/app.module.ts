@@ -3,14 +3,31 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { UploadVideoComponent } from './upload-video/upload-video.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import { HeaderComponent } from './header/header.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { SaveVideoDetailsComponent } from './save-video-details/save-video-details.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UploadVideoComponent,
+    HeaderComponent,
+    SaveVideoDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgxFileDropModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [
     provideClientHydration()
