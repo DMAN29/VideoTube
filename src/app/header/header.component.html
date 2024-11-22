@@ -8,6 +8,7 @@
   >
     <mat-icon>video_call</mat-icon>
   </button>
+  @if (isAuthenticated) {
   <button
     mat-icon-button
     class="example-icon"
@@ -15,4 +16,7 @@
   >
     <mat-icon>account_circle</mat-icon>
   </button>
+  } @else {
+  <button mat-raised-button (click)="login()">Login</button>
+  }
 </mat-toolbar>

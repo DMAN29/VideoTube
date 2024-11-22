@@ -1,1 +1,83 @@
-<p>save-video-details works!</p>
+<div class="container">
+  <div class="container-1">Hi</div>
+  <div class="container-2">
+    <div class="mat-title">
+      <h2>Add Video Metadata</h2>
+    </div>
+    <form [formGroup]="saveVideoDetailsForm">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput [formControl]="title" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput [formControl]="description" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Video Status</mat-label>
+        <mat-select [formControl]="videoStatus">
+          <mat-option value="PUBLIC">PUBLIC</mat-option>
+          <mat-option value="PRIVATE">PRIVATE</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-chip-list">
+        <mat-label>Tags</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Enter fruits">
+          @for (tag of tags; track tags) {
+          <mat-chip-row (removed)="remove(tag)">
+            {{ tag }}
+            <button matChipRemove [attr.aria-label]="'remove ' + tag">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+          }
+          <input
+            placeholder="add tags..."
+            [matChipInputFor]="chipGrid"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-grid>
+      </mat-form-field>
+      <div>
+        <label for="inputGroupFile01">Upload Thumbnail: </label>
+
+        <div class="custom-file">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="inputGroupFile01"
+            aria-describedby="inputGroupFileAddon01"
+            (change)="onFileSelected($event)"
+          />
+        </div>
+        <br />
+        @if (fileSelected) {
+        <div>
+          <p>Select File: {{ selectedFileName }}</p>
+        </div>
+        <button mat-raised-button color="primary" (click)="onUpload()">
+          Upload
+        </button>
+        }
+      </div>
+      <br />
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        (click)="saveVideo()"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+  <div class="container-2">
+    <app-video-player [videoUrl]="videoUrl" />
+  </div>
+  <div class="container-1"></div>
+</div>

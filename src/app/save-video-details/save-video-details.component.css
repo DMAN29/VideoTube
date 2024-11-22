@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.container-1 {
+    width: 20%;
+}
+
+.container-2 {
+    width: 30%;
+}
