@@ -1,23 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { OidcSecurityService } from 'angular-auth-oidc-client';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'video-tube';
+  title = 'youtube-clone-ui';
 
-  constructor(private oidcSecurityService: OidcSecurityService){
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  }
 
-  ngOnInit() {
-    this.oidcSecurityService
-      .checkAuth()
-      .subscribe(isAuthenticated=>{
-        console.log('app is authenticated',isAuthenticated)
-      });
+  ngOnInit(): void {
+    
   }
 }

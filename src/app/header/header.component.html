@@ -13,10 +13,11 @@
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with share icon"
+    (click)="logout()"
   >
     <mat-icon>account_circle</mat-icon>
   </button>
   } @else {
-  <button mat-raised-button (click)="login()">Login</button>
+  <button mat-raised-button (click)="loginForm()">Login</button>
   }
 </mat-toolbar>
